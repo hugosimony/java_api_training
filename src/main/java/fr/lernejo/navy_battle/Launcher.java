@@ -23,7 +23,7 @@ public class Launcher {
         Game game = new Game(boatSizes, boats);
         if (args.length == 2) {
             new SendConnection(Integer.parseInt(args[0]), args[1]);
-            game.adversaryURL.add(args[1]);
+            game.opponentURL.add(args[1]);
         }
         Server server = new Server("localhost", Integer.parseInt(args[0]));
         server.createServer(game);
