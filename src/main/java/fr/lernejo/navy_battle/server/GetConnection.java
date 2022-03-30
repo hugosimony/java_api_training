@@ -33,11 +33,7 @@ public record GetConnection(Game game, String port) implements HttpHandler {
             JsonNode message = data.path("message");
             if (isMissingNode(id, url, message)) {
                 game.opponentURL.add(data.path("url").asText());
-                String msg = "{" +
-                    "\n\"id\": \"2aca7611-0ae4-49f3-bf63-75bef4769028\",\n" +
-                    "\"url\": \"http://localhost:" + this.port + "\",\n" +
-                    "\"message\": \"May the best code win\"\n" +
-                    "}";
+                String msg = "{\n\"id\": \"2aca7611-0ae4-49f3-bf63-75bef4769028\",\n\"url\": \"http://localhost:" + this.port + "\",\n\"message\": \"May the best code win\"\n}";
                 sendResponse(e, msg, 202);
                 game.play();
             } else sendResponse(e, "Bad Request", 400);

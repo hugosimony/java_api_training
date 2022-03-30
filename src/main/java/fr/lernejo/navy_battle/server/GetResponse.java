@@ -24,10 +24,7 @@ public record GetResponse(Game game) implements HttpHandler {
             String target = query.split("=")[1];
             String consequence = this.game.checkTarget(target);
             boolean stillPlaying = !game.checkWin();
-            String msg = "{" +
-                "\n\"consequence\": \"" + consequence + "\",\n" +
-                "\"shipLeft\": " + stillPlaying + "\n" +
-                "}";
+            String msg = "{\n\"consequence\": \"" + consequence + "\",\n\"shipLeft\": " + stillPlaying + "\n}";
             sendResponse(e, msg, 202);
             if (stillPlaying)
                 game.play();
